@@ -16,7 +16,7 @@ public class GiveSoldierAmmo : MonoBehaviour
     void Start()
     {
         giveAmmo = false;
-        ammoCount = 0;
+        ammoCount = 10;
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class GiveSoldierAmmo : MonoBehaviour
     {
         if(giveAmmo)
         {
-            if(PlayerAmmo.Instance.currentAmmo<=0 || ammoCount== 4 )
+            if(PlayerAmmo.Instance.currentAmmo<=0 || ammoCount== 10 )
             {
                 giveAmmo = false;
             }
@@ -36,17 +36,17 @@ public class GiveSoldierAmmo : MonoBehaviour
             {
                 PlayerAmmo.Instance.currentAmmo--;
                 PlayerAmmo.Instance.ammoParent.GetChild(PlayerAmmo.Instance.currentAmmo).gameObject.SetActive(false);
-                ammoCount++;
+                ammoCount+=5;
                 cooldown.fillAmount = 0;
             }
         }
-
-        ammoText.text = ammoCount+"/4";
+        if(ammoCount>10){ammoCount = 10;}
+        ammoText.text = ammoCount+"/10";
     }
 
       void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player") && PlayerAmmo.Instance.currentAmmo > 0 && ammoCount <5)
+        if(other.gameObject.CompareTag("Player") && PlayerAmmo.Instance.currentAmmo > 0 && ammoCount <10)
         {
             giveAmmo = true;
         }
@@ -59,5 +59,11 @@ public class GiveSoldierAmmo : MonoBehaviour
             cooldown.fillAmount =0;
             giveAmmo = false;
         }
+    }
+
+    void OnEnable()
+    {
+        giveAmmo = false;
+        ammoCount = 10;
     }
 }

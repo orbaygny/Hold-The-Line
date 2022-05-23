@@ -26,7 +26,7 @@ public class EnemyHP : MonoBehaviour
         {
             animator.SetBool("Death",true);
             GetComponent<AIMove>().BreakRoute();
-            PlayerMpney.Instance.money += 10;
+            PlayerMpney.Instance.money += 5;
             isDead = true;
         }
     }

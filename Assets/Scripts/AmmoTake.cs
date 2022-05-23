@@ -9,7 +9,7 @@ public class AmmoTake : MonoBehaviour
     int maxAmmo;
 
     public Image cooldown;
-     public float waitTime = 3.0f;
+      float waitTime = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +27,7 @@ public class AmmoTake : MonoBehaviour
             }
            else if(cooldown.fillAmount<1)
             {
-              cooldown.fillAmount += 1.0f / waitTime * Time.deltaTime;
+              cooldown.fillAmount += 1.0f/waitTime * Time.deltaTime;
             }
             
          else if(PlayerAmmo.Instance.currentAmmo<PlayerAmmo.Instance.maxAmmo && cooldown.fillAmount>=1)

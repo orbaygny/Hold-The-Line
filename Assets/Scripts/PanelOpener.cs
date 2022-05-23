@@ -19,10 +19,12 @@ public class PanelOpener : MonoBehaviour
         if(PlayerHp.Instance.isDead)
         {
             failPanel.SetActive(true);
+            GameManager.Instance.levelEnded = true;
         }
          if(AiSpawner.Instance.CheckIfAllDies())
         {
             winPanel.SetActive(true);
+            GameManager.Instance.levelEnded = true;
         }
     }
 

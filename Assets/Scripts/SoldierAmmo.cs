@@ -22,7 +22,7 @@ public class SoldierAmmo : MonoBehaviour
             {
                 fireCount++;
             }
-           else if(fireCount == 3)
+           else if(fireCount >= 3)
             {
              ammoPlace.GetComponent<GiveSoldierAmmo>().ammoCount--;
              fireCount = 0;

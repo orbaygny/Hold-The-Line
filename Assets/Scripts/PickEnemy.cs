@@ -15,8 +15,9 @@ public class PickEnemy : MonoBehaviour
 
     void Update()
     {
-        
-      if(enemies.transform.GetChild(pointer).gameObject.activeSelf)
+        if(pointer<enemies.transform.childCount)
+        {
+             if(enemies.transform.GetChild(pointer).gameObject.activeSelf)
       {
           if(enemies.transform.GetChild(pointer).GetComponent<EnemyHP>().isDead)
           {
@@ -28,6 +29,7 @@ public class PickEnemy : MonoBehaviour
               currentEnemy = enemies.transform.GetChild(pointer);
           }
       }
+        }
     }
     void OnTriggerEnter(Collider other)
     {

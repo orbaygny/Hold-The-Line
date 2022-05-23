@@ -18,7 +18,9 @@ public class SoldierAttack1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _ammoCount = ammoCount.GetComponent<GiveSoldierAmmo>().ammoCount;
+        if(!GameManager.Instance.levelEnded)
+        {
+            _ammoCount = ammoCount.GetComponent<GiveSoldierAmmo>().ammoCount;
         if(aimCol.GetComponent<PickEnemy>().currentEnemy != null)
         {
             currentEnemy = aimCol.GetComponent<PickEnemy>().currentEnemy;
@@ -30,11 +32,15 @@ public class SoldierAttack1 : MonoBehaviour
             transform.LookAt(currentEnemy);
         }
 
-        if(aimCol.GetComponent<PickEnemy>().currentEnemy == null || _ammoCount == 0)
+       else if(aimCol.GetComponent<PickEnemy>().currentEnemy == null || _ammoCount == 0)
         {
             currentEnemy = null;
             animator.SetBool("Shoot",false);
             
+        }
+        }
+        else{
+            animator.SetBool("Shoot",false);
         }
     }
 }

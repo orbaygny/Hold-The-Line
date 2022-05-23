@@ -25,9 +25,11 @@ public class CharController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-         var pos = transform.position;
+        if(!GameManager.Instance.levelEnded)
+        {
+             var pos = transform.position;
          pos.z =  Mathf.Clamp(transform.position.z, -11.0f, 11.0f);
-          pos.x =  Mathf.Clamp(transform.position.x, -15.7f, 14.7f);
+          pos.x =  Mathf.Clamp(transform.position.x, -11.0f, 11.0f);
          transform.position = pos;
         speed = 10;
        
@@ -40,5 +42,11 @@ public class CharController : MonoBehaviour
       }
         
       else{animator.SetBool("Move",false);}
+        }
+
+        else{
+            animator.SetBool("Move",false);
+        }
+
     }
 }

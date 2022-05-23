@@ -9,7 +9,7 @@ public class UnlockSoldier : MonoBehaviour
     bool unlock;
     public Image cooldown;
     public GameObject fillParent;
-    public float waitTime = 3.0f;
+     float waitTime = 1.0f;
     public TextMeshProUGUI unlockCost; 
     public int _unlockCost;
     // Start is called before the first frame update
@@ -74,5 +74,15 @@ public class UnlockSoldier : MonoBehaviour
             cooldown.fillAmount =0;
             unlock = false;
         }
+    }
+
+    public void WhenDead()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(6).gameObject.SetActive(false);
+        transform.GetChild(7).gameObject.SetActive(false);
+        fillParent.SetActive(true);
+        cooldown.fillAmount = 0;
+        GetComponent<BoxCollider>().enabled = true;
     }
 }
