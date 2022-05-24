@@ -14,7 +14,7 @@ public class EnemyHP : MonoBehaviour
     void Start()
     {
         isDead = false;
-        hp = 3;
+        hp = 5;
         animator = GetComponent<Animator>();
     }
 
@@ -26,7 +26,7 @@ public class EnemyHP : MonoBehaviour
         {
             animator.SetBool("Death",true);
             GetComponent<AIMove>().BreakRoute();
-            PlayerMpney.Instance.money += 5;
+            PlayerMpney.Instance.money += 2;
             isDead = true;
         }
     }

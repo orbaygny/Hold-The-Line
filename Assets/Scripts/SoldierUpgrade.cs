@@ -69,6 +69,14 @@ public class SoldierUpgrade : MonoBehaviour
         }
     }
 
+      void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.CompareTag("Player") && _upgradeCost <= PlayerMpney.Instance.money)
+        {
+            upgrade = true;
+        }
+    }
+
     void OnTriggerExit(Collider other)
     {
         if(other.gameObject.CompareTag("Player") )

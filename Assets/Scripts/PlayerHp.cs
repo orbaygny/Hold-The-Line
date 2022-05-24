@@ -22,7 +22,7 @@ public class PlayerHp : MonoBehaviour
     void Start()
     {
          isDead = false;
-        hp = 3;
+        hp = 5;
         animator = GetComponent<Animator>();
     }
 

@@ -52,6 +52,14 @@ public class GiveSoldierAmmo : MonoBehaviour
         }
     }
 
+        void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.CompareTag("Player") && PlayerAmmo.Instance.currentAmmo > 0 && ammoCount <10)
+        {
+            giveAmmo = true;
+        }
+    }
+
     void OnTriggerExit(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))

@@ -48,6 +48,7 @@ public class UnlockSoldier : MonoBehaviour
                 cooldown.fillAmount = 0;
                 GetComponent<BoxCollider>().enabled = false;
                 UnlocCost.Instance.Increase();
+                PlayerMpney.Instance.money -= _unlockCost;
                 unlock = false;
 
             }
@@ -61,7 +62,15 @@ public class UnlockSoldier : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player") && _unlockCost <= PlayerMpney.Instance.money)
+        {
+            unlock = true;
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.CompareTag("Player") && _unlockCost <= PlayerMpney.Instance.money)
         {
             unlock = true;
         }

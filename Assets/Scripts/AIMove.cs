@@ -10,6 +10,7 @@ public class AIMove : MonoBehaviour
     Animator animator;
     Vector3 destination;
 
+    public bool attack;
     [HideInInspector] public Transform target;
     public GameObject AiSpawner;
    
@@ -40,16 +41,21 @@ public class AIMove : MonoBehaviour
 
         if(distance<= agent.stoppingDistance)
         {
+            attack = true;
             animator.SetBool("Attack",true);
+            
         }
         else if(distance > agent.stoppingDistance)
         {
+            attack = false;
             animator.SetBool("Attack",false);
+            
         }
         }
         }
         else
         {
+            attack = false;
              animator.SetBool("Attack",false);
              BreakRoute();
             animator.SetBool("Stop",true);

@@ -19,6 +19,6 @@ public class BulletStart : MonoBehaviour
    {
        goPos = transform.localPosition;
         transform.localPosition = jumpPoint.localPosition;
-        transform.DOLocalJump(goPos,5,1,1);
+        transform.DOLocalJump(goPos,3,1,0.5f);
    }
 }
