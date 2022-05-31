@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ElephantSDK;
 
 public class CharController : MonoBehaviour
 {   
@@ -10,6 +11,8 @@ public class CharController : MonoBehaviour
     Rigidbody rBody;
     Animator animator;
      [HideInInspector] public bool move;
+
+    bool started;
     void Awake()
     {
         Instance = this;
@@ -17,11 +20,23 @@ public class CharController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        started = true;
         move = false;
         rBody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
-
+    private void Update()
+    {
+        if (started)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                Elephant.LevelStarted((PlayerPrefs.GetInt("Level", 1) + 1));
+                Debug.Log("Baþladý");
+                started = false;
+            }
+        }
+    }
     // Update is called once per frame
     void FixedUpdate()
     {

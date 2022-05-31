@@ -15,7 +15,7 @@ public class PlayerMpney : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        money = 300;
+        money = 0;
         moneyText.text = money.ToString();
     }
 

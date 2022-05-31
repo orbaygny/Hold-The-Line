@@ -26,16 +26,14 @@ public class GameManager : MonoBehaviour
                     levels.Add(level.gameObject);
                 }
             }
-             if(PlayerPrefs.GetInt("Level", 0)> levels.Count) 
-            {
+             
                 CurrentLevel = levels[PlayerPrefs.GetInt("Level", 0) % levels.Count];
                 levels[PlayerPrefs.GetInt("Level", 0) % levels.Count].SetActive(true);
-            }
+            
 
-            else {
-                CurrentLevel = levels[PlayerPrefs.GetInt("Level", 0) ];
-                levels[PlayerPrefs.GetInt("Level", 0)].SetActive(true);
-            }
+            
+               
+            
             
         }
         else
