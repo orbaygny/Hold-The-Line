@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using MoreMountains.NiceVibrations;
 public class AmmoTake : MonoBehaviour
 {
     bool giveAmmo;
@@ -32,6 +32,7 @@ public class AmmoTake : MonoBehaviour
             
          else if(PlayerAmmo.Instance.currentAmmo<PlayerAmmo.Instance.maxAmmo && cooldown.fillAmount>=1)
             {
+                MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                 PlayerAmmo.Instance.ammoParent.GetChild(PlayerAmmo.Instance.currentAmmo).gameObject.SetActive(true);
                 PlayerAmmo.Instance.currentAmmo++;
                 cooldown.fillAmount = 0;

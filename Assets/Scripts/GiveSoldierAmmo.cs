@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
+
 
 public class GiveSoldierAmmo : MonoBehaviour
 {
@@ -36,7 +38,7 @@ public class GiveSoldierAmmo : MonoBehaviour
             }
             else if( cooldown.fillAmount>=1)
             {
-                
+                MMVibrationManager.Haptic(HapticTypes.Success);
                 PlayerAmmo.Instance.currentAmmo--;
                 PlayerAmmo.Instance.ammoParent.GetChild(PlayerAmmo.Instance.currentAmmo).gameObject.GetComponent<BulletStart>().Jump(soldier.GetChild(upgradeCol.GetComponent<SoldierUpgrade>().soldierLvl).position);
                 ammoCount+=5;
