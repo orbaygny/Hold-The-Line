@@ -39,10 +39,11 @@ public class UnlockSoldier : MonoBehaviour
             
          else if( cooldown.fillAmount>=1)
             {
-                transform.GetChild(0).gameObject.SetActive(true);
                 transform.GetChild(1).gameObject.SetActive(true);
+                transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+                transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+                transform.GetChild(5).gameObject.SetActive(true);
                 transform.GetChild(6).gameObject.SetActive(true);
-                transform.GetChild(7).gameObject.SetActive(true);
                // transform.GetChild(8).gameObject.SetActive(true);
                 fillParent.SetActive(false);
                 cooldown.fillAmount = 0;
@@ -87,9 +88,10 @@ public class UnlockSoldier : MonoBehaviour
 
     public void WhenDead()
     {
-        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
+        transform.GetChild(5).gameObject.SetActive(false);
         transform.GetChild(6).gameObject.SetActive(false);
-        transform.GetChild(7).gameObject.SetActive(false);
         fillParent.SetActive(true);
         cooldown.fillAmount = 0;
         GetComponent<BoxCollider>().enabled = true;

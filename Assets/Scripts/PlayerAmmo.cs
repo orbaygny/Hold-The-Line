@@ -1,15 +1,19 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAmmo : MonoBehaviour
 {
+    
+   
     public static PlayerAmmo Instance{get; private set;}
-
+  
     public Transform ammoParent;
   [HideInInspector] public int maxAmmo;
   [HideInInspector] public int currentAmmo;
 
+    
+    
     void Awake()
     {
         Instance = this;

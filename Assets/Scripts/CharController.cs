@@ -25,27 +25,31 @@ public class CharController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!GameManager.Instance.levelEnded)
+        
+        if (!GameManager.Instance.levelEnded)
         {
              var pos = transform.position;
-         pos.z =  Mathf.Clamp(transform.position.z, -11.0f, 11.0f);
-          pos.x =  Mathf.Clamp(transform.position.x, -11.0f, 11.0f);
+         pos.z =  Mathf.Clamp(transform.position.z, -0.5f, 12.0f);
+          pos.x =  Mathf.Clamp(transform.position.x, -12.8f, 12.8f);
          transform.position = pos;
         speed = 10;
        
              if(joystick.Horizontal >.2f || joystick.Vertical >.2f ||joystick.Horizontal <-.2f || joystick.Vertical <-.2f )
       {
           move = true;
-           rBody.velocity = new Vector3(joystick.Horizontal*speed,rBody.velocity.y,joystick.Vertical*speed);
+               
+                rBody.velocity = new Vector3(joystick.Horizontal*speed,rBody.velocity.y,joystick.Vertical*speed);
           animator.SetBool("Move",true);
           transform.localRotation = Quaternion.LookRotation(rBody.velocity);
       }
         
-      else{animator.SetBool("Move",false);}
+      else{animator.SetBool("Move",false); rBody.velocity = Vector3.zero; }
         }
 
         else{
+            rBody.velocity = Vector3.zero;
             animator.SetBool("Move",false);
+            animator.SetBool("Attack",false);
         }
 
     }

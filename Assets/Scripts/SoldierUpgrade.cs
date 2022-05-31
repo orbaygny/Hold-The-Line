@@ -34,7 +34,7 @@ public class SoldierUpgrade : MonoBehaviour
             {
                 upgrade = false;
             }
-           else if(cooldown.fillAmount<1 && soldierLvl <5)
+           else if(cooldown.fillAmount<1 && soldierLvl <4)
             {
               cooldown.fillAmount += 1.0f / waitTime * Time.deltaTime;
             }
@@ -44,7 +44,7 @@ public class SoldierUpgrade : MonoBehaviour
                 soldierLvl++;
                 soldier.GetChild(soldierLvl).gameObject.SetActive(true);
                 //soldier.GetChild(soldierLvl).gameObject.GetComponent<Animator>().SetBool("Rifle",true);
-                soldier.GetChild(soldierLvl).gameObject.GetComponent<Animator>().SetFloat("Speed",1+(0.25f*soldierLvl));
+                //soldier.GetChild(soldierLvl).gameObject.GetComponent<Animator>().SetFloat("Speed",1+(0.25f*soldierLvl));
                 cooldown.fillAmount = 0;
                 PlayerMpney.Instance.money -= _upgradeCost;
                 _upgradeCost += 10;

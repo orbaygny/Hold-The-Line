@@ -19,13 +19,19 @@ public class CamFollow : MonoBehaviour
     private void FixedUpdate()
     {
         SmoothFollow();   
+        
+    }
+
+    private void LateUpdate()
+    {
+      
     }
 
     public void SmoothFollow()
     {
         Vector3 targetPos = target.position + offset;
         Vector3 smoothFollow = Vector3.Lerp(transform.position, targetPos, smoothSpeed);
-
+       
         transform.position = smoothFollow;
         //transform.LookAt(target);
     }

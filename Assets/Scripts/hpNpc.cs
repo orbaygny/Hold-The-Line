@@ -21,7 +21,7 @@ public class hpNpc : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         transform.GetChild(5).LookAt(Camera.main.transform);
+         transform.GetChild(6).LookAt(Camera.main.transform);
         hpSlider.value = hp;
         if(hp<=0 && !isDead)
         {
@@ -36,6 +36,6 @@ public class hpNpc : MonoBehaviour
     void OnEnable()
     {
         isDead = false;
-        hp = 3;
+        hp = 5;
     }
 }

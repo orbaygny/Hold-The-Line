@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class GiveSoldierAmmo : MonoBehaviour
 {
     public Transform soldier;
+    public Transform upgradeCol;
     public Image cooldown;
     public float waitTime =0.000000001f;
     public TextMeshProUGUI ammoText;
@@ -34,8 +36,9 @@ public class GiveSoldierAmmo : MonoBehaviour
             }
             else if( cooldown.fillAmount>=1)
             {
+                
                 PlayerAmmo.Instance.currentAmmo--;
-                PlayerAmmo.Instance.ammoParent.GetChild(PlayerAmmo.Instance.currentAmmo).gameObject.SetActive(false);
+                PlayerAmmo.Instance.ammoParent.GetChild(PlayerAmmo.Instance.currentAmmo).gameObject.GetComponent<BulletStart>().Jump(soldier.GetChild(upgradeCol.GetComponent<SoldierUpgrade>().soldierLvl).position);
                 ammoCount+=5;
                 cooldown.fillAmount = 0;
             }
